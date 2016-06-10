@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb",
+  'env': {
+    'es6': true
+  },
+  "globals": {
+    "__DEV__": false
+  },
+  "rules": {
+    "object-curly-spacing": 0,
+    "comma-dangle": 0,
+    "react/jsx-space-before-closing": 0,
+    "react/prefer-stateless-function": 0,
+    "max-len": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-boolean-value": 0
+  },
+  "ecmaFeatures": {
+    "spread": true
+  }
+}
