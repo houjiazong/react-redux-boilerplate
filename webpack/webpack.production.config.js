@@ -18,7 +18,8 @@ module.exports = {
       'js-cookie',
       'react-router-redux',
       'redux-thunk',
-      'promise-es6'
+      'promise-es6',
+      'history'
     ]
   },
   output: {
