@@ -3,25 +3,25 @@ import webpackDevMiddleware from 'koa-webpack-dev-middleware';
 import webpackHotMiddleware from 'koa-webpack-hot-middleware';
 import webpackConfig from '../webpack/webpack.config';
 import fs from 'fs';
-import Debug from 'debug';
+import _debug from 'debug';
 import path from 'path';
 
-const debug = Debug('app:webpack');
+const debug = _debug('app:webpack');
 
 export default (app) => {
   const compiler = webpack(webpackConfig);
   compiler.plugin('compilation', compilation => {
     compilation.plugin('html-webpack-plugin-after-emit', (htmlPluginData, cb) => {
-      let buildPath = path.resolve(`${__dirname}/../build`);
+      const buildPath = path.resolve(`${__dirname}/../build`);
       if (!fs.existsSync(buildPath)) {
         fs.mkdirSync(buildPath);
       }
       fs.writeFile(path.resolve(`${__dirname}/../build/${htmlPluginData.plugin.options.filename}`), htmlPluginData.html.source(), err => {
         if (err) {
-          return debug(err);
-        } else {
-          debug(`HtmlWebpackPlugin: /build/${htmlPluginData.plugin.options.filename} saved`);
+          debug(err);
+          return;
         }
+        debug(`HtmlWebpackPlugin: /build/${htmlPluginData.plugin.options.filename} saved`);
       });
       cb();
     });

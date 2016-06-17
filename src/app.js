@@ -1,14 +1,14 @@
+import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {Router, Route, IndexRedirect, IndexRoute, useRouterHistory} from 'react-router';
-import React from 'react';
+import {Router, Route, IndexRedirect, useRouterHistory} from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import {syncHistoryWithStore} from 'react-router-redux';
-
 import configureStore from './store/configureStore';
-import {CoreLayout} from './containers';
+
+import Layout from './containers/Layout';
+import Todo from './containers/Todo';
 import PageNotFound from './components/PageNotFound';
-import Main from './containers/Main';
 
 const browserHistory = useRouterHistory(createBrowserHistory)({basename: '/app'});
 
@@ -17,17 +17,17 @@ const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
 
 const MOUNT_NODE = document.getElementById('root');
-
 render(
   <Provider store={store}>
     <Router history={history}>
       <Route path='/'>
-        <Route component={CoreLayout}>
-          <Route path='main' component={Main}/>
-          <IndexRedirect to='main' />
+        <Route component={Layout}>
+          <Route path='todo' component={Todo} />
+          <IndexRedirect to='todo' />
         </Route>
-        <Route path='*' component={PageNotFound}/>
+        <Route path='*' component={PageNotFound} />
       </Route>
     </Router>
-  </Provider>, MOUNT_NODE
+  </Provider>,
+  MOUNT_NODE
 );

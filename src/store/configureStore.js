@@ -2,19 +2,18 @@ import {
   applyMiddleware,
   compose,
   createStore
-}
-from 'redux';
+} from 'redux';
 import {
   routerMiddleware
 }
 from 'react-router-redux';
-import thunk from 'redux-thunk';
-import reducers from '../reducers';
+
+import rootReducer from '../reducers';
 
 export default (initialState = {}, history) => {
-  const middlewares = [thunk, routerMiddleware(history)];
-
+  const middlewares = [routerMiddleware(history)];
   const enhancers = [];
+
   if (__DEV__) {
     const devToolsExtension = window.devToolsExtension;
     if (typeof devToolsExtension === 'function') {
@@ -22,7 +21,7 @@ export default (initialState = {}, history) => {
     }
   }
 
-  const store = createStore(reducers, initialState, compose(
+  const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(...middlewares),
     ...enhancers
   ));

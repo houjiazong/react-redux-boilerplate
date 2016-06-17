@@ -12,13 +12,9 @@ module.exports = {
       'react-router',
       'redux',
       'react-redux',
-      'axios',
-      'classnames',
-      'js-cookie',
       'react-router-redux',
-      'redux-thunk',
-      'promise-es6',
-      'history'
+      'history',
+      'classnames'
     ]
   },
   output: {

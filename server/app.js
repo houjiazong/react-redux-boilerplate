@@ -1,6 +1,6 @@
 import koa from 'koa';
 import path from 'path';
-import Debug from 'debug';
+import _debug from 'debug';
 import logger from 'koa-logger';
 import serve from 'koa-static';
 import cons from 'consolidate';
@@ -11,9 +11,9 @@ import webpackDev from '../webpack';
 import routes from './routes';
 
 const app = koa();
-const debug = Debug('app:server');
+const debug = _debug('app:server');
 
-const IS_PROD = process.env.NODE_ENV == 'production';
+const IS_PROD = process.env.NODE_ENV === 'production';
 const PORT = process.env.PORT || 9000;
 
 if (!IS_PROD) {
