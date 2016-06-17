@@ -29,7 +29,7 @@ class Reddit extends Component {
   }
 
   handleRefreshClick(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     const {dispatch, selectedReddit} = this.props;
     dispatch(invalidateReddit(selectedReddit));

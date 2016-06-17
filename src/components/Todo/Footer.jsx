@@ -27,7 +27,7 @@ class Footer extends Component {
     const title = FILTER_TITLES[filter];
     const {filter: selectedFilter, onShow} = this.props;
     const classObj = {
-      [styles['selected']]: filter === selectedFilter
+      [styles.selected]: filter === selectedFilter
     };
 
     return (

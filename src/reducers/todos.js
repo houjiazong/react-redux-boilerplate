@@ -34,7 +34,7 @@ export default function todos(state = initialState, action) {
       return state.map(todo => {
         todo.id === action.id ? Object.assign({}, todo, {
           text: action.text
-        }) : todo
+        }) : todo;
       });
 
     case COMPLETE_TODO:
