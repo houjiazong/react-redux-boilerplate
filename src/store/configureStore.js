@@ -7,11 +7,12 @@ import {
   routerMiddleware
 }
 from 'react-router-redux';
+import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from '../reducers';
 
 export default (initialState = {}, history) => {
-  const middlewares = [routerMiddleware(history)];
+  const middlewares = [thunkMiddleware, routerMiddleware(history)];
   const enhancers = [];
 
   if (__DEV__) {

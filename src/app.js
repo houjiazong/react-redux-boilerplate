@@ -8,7 +8,10 @@ import configureStore from './store/configureStore';
 
 import Layout from './containers/Layout';
 import Todo from './containers/Todo';
+import Reddit from './containers/Reddit';
 import PageNotFound from './components/PageNotFound';
+
+require('es6-promise').polyfill();
 
 const browserHistory = useRouterHistory(createBrowserHistory)({basename: '/app'});
 
@@ -23,7 +26,8 @@ render(
       <Route path='/'>
         <Route component={Layout}>
           <Route path='todo' component={Todo} />
-          <IndexRedirect to='todo' />
+          <Route path='reddit' component={Reddit} />
+          <IndexRedirect to='reddit' />
         </Route>
         <Route path='*' component={PageNotFound} />
       </Route>

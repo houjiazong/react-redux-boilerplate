@@ -14,7 +14,10 @@ module.exports = {
       'react-redux',
       'react-router-redux',
       'history',
-      'classnames'
+      'classnames',
+      'redux-thunk',
+      'axios',
+      'es6-promise'
     ]
   },
   output: {

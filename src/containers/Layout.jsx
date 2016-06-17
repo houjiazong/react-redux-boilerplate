@@ -9,8 +9,8 @@ class Layout extends Component {
       <div className='container'>
         <div style={{margin: '10px 0'}}>
           <span>Demo:</span>
+          <Link to='reddit' className='btn btn-link'>Reddit</Link>
           <Link to='todo' className='btn btn-link'>Todo</Link>
-          <Link to='async' className='btn btn-link'>Async</Link>
         </div>
         {this.props.children}
       </div>
