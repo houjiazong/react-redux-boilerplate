@@ -15,7 +15,7 @@ require('es6-promise').polyfill();
 
 const browserHistory = useRouterHistory(createBrowserHistory)({basename: '/app'});
 
-const initialState = window.___INITIAL_STATE__;
+const initialState = window.INITIAL_STATE;
 const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
 

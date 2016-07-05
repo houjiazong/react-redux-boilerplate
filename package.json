@@ -2,7 +2,7 @@
   "name": "react-redux-boilerplate",
   "version": "0.0.1",
   "description": "React Redux Boilerplate, Starter Kit",
-  "main": "server/app.js",
+  "main": "server.js",
   "scripts": {
     "clean": "rm -rf ./build",
     "predev": "npm run clean",
@@ -12,7 +12,7 @@
   },
   "betterScripts": {
     "dev": {
-      "command": "nodemon --exec babel-node server/app.js",
+      "command": "nodemon server.js",
       "env": {
         "NODE_ENV": "development",
         "DEBUG": "app:*"
@@ -36,7 +36,6 @@
   "dependencies": {
     "autoprefixer-loader": "^3.2.0",
     "axios": "^0.12.0",
-    "babel-cli": "^6.9.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.9.0",
