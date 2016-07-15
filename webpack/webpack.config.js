@@ -2,6 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const env = process.env.NODE_ENV;
+
 module.exports = {
   context: path.join(__dirname, '../src'),
   entry: {
@@ -65,8 +67,7 @@ module.exports = {
       }
     }),
     new webpack.DefinePlugin({
-      __DEV__: process.env.NODE_ENV === 'development',
-      __PRERELEASE__: process.env.NODE_ENV === 'production'
+      'process.env.NODE_ENV': JSON.stringify(env)
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
