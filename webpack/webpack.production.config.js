@@ -66,7 +66,10 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       __DEV__: process.env.NODE_ENV === 'development',
-      __PRERELEASE__: process.env.NODE_ENV === 'production'
+      __PRERELEASE__: process.env.NODE_ENV === 'production',
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
