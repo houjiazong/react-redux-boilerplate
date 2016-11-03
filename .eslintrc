@@ -1,29 +1,26 @@
 {
-  "extends": "airbnb",
   "parser": "babel-eslint",
-  'env': {
-    'es6': true
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
   },
-  "globals": {
-    "__DEV__": false
+  ecmaFeatures: {
+    "jsx": true
   },
   "rules": {
-    "object-curly-spacing": 0,
-    "comma-dangle": 0,
-    "react/jsx-space-before-closing": 0,
-    "react/prefer-stateless-function": 0,
-    "max-len": 0,
-    "react/jsx-closing-bracket-location": 0,
-    "react/jsx-boolean-value": 0,
-    "react/jsx-quotes": 0,
+    "space-before-function-paren": ["error", {"anonymous": "always", "named": "never"}],
     "jsx-quotes": [2, "prefer-single"],
-    "no-case-declarations": 0,
-    "no-unused-expressions": 0,
-    "no-confusing-arrow": 0,
-    "array-callback-return": 0,
-    "no-nested-ternary": 0
-  },
-  "ecmaFeatures": {
-    "spread": true
+    "react/jsx-no-bind": [0, {"ignoreRefs": true, "allowArrowFunctions": true, "allowBind": true}],
+    "react/jsx-space-before-closing": [0, "never"]
   }
 }

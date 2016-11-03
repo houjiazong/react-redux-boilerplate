@@ -1,16 +1,12 @@
-import {combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux';
-import todos from './todos';
 import {
-  postsByReddit,
-  selectedReddit
-} from './reddit';
+  combineReducers
+} from 'redux'
+import {
+  routerReducer as routing
+} from 'react-router-redux'
+import todos from './todos'
 
-const rootReducer = combineReducers({
-  todos,
-  postsByReddit,
-  selectedReddit,
-  routing: routerReducer
-});
-
-export default rootReducer;
+export default combineReducers({
+  routing,
+  todos
+})
