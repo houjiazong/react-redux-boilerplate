@@ -21,6 +21,7 @@ A boilerplate for React && Redux
 ## Install
 
 `git clone git@github.com:houjiazong/react-redux-boilerplate.git`
+
 `npm install`
 
 ## Dev
