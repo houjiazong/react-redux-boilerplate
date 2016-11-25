@@ -2,6 +2,7 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
+import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 
 const ENV = process.env.NODE_ENV
 
@@ -60,8 +61,10 @@ module.exports = {
       filename: 'index.html',
       minify: {
         collapseWhitespace: false
-      }
+      },
+      alwaysWriteToDisk: true
     }),
+    new HtmlWebpackHarddiskPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.js'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

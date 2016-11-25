@@ -1,2 +1,2 @@
 require('babel-core/register')
-require('../build/webpack-dev-compiler.js')
+require('../server/app.js')

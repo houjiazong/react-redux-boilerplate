@@ -1,32 +1,24 @@
-import WebpackDevServer from 'webpack-dev-server'
+import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from './webpack.config'
 import webpack from 'webpack'
-import {PROXY_HOST} from '../config'
+import _debug from 'debug'
 
-const compiler = webpack(webpackConfig)
+const debug = _debug('app:build:webpack-dev-compiler')
 
-const server = new WebpackDevServer(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  noInfo: false,
-  hot: true,
-  inline: true,
-  historyApiFallback: true,
-  stats: {
-    colors: true,
-    hash: true,
-    cached: true,
-    chunkModules: false,
-    cachedAssets: true
-  },
-  proxy: {
-    '/api/*': {
-      target: PROXY_HOST,
-      pathRewrite: {'^/api': ''}
+module.exports = (app) => {
+  const compiler = webpack(webpackConfig)
+  debug('start build...')
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+    noInfo: false,
+    stats: {
+      colors: true,
+      hash: true,
+      cached: true,
+      chunkModules: false,
+      cachedAssets: true
     }
-  }
-})
-
-server.use(webpackHotMiddleware(compiler))
-
-server.listen(9000, 'localhost')
+  }))
+  app.use(webpackHotMiddleware(compiler))
+}
