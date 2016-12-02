@@ -38,4 +38,4 @@ A boilerplate for React && Redux
 
 ## Proxy Config
 
-`config/index.js`
+`config/development.yml && config/production.yml`
