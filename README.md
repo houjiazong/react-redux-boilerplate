@@ -2,6 +2,10 @@
 
 A boilerplate for React && Redux
 
+# Server Side Rendering Version
+
+[click here](https://github.com/houjiazong/react-redux-rrsr-boilerplate)
+
 ## Contains
 
 - [x] [Webpack](https://webpack.github.io)

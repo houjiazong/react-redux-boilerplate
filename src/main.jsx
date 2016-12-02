@@ -5,7 +5,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory'
 import {syncHistoryWithStore} from 'react-router-redux'
 import axios from 'axios'
 
-import createStore from './store/createStore'
+import configureStore from './store/configureStore'
 
 // ========================================================
 // Browser History Setup
@@ -16,7 +16,7 @@ const browserHistory = useRouterHistory(createBrowserHistory)({basename: '/'})
 // Store and History Instantiation
 // ========================================================
 const initialState = window.___INITIAL_STATE__
-const store = createStore(initialState, browserHistory)
+const store = configureStore(initialState, browserHistory)
 const history = syncHistoryWithStore(browserHistory, store)
 
 // ========================================================
