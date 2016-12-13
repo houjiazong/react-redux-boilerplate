@@ -16,6 +16,7 @@ if (!IS_PROD) {
 }
 
 nunjucks.configure(path.join(__dirname, '../dist'), {
+  noCache: !IS_PROD,
   autoescape: true,
   express: app
 })
