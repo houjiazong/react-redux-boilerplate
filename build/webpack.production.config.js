@@ -26,7 +26,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../dist'),
-    filename: 'js/[name].[hash:16].js'
+    filename: 'js/[name].[hash:16].js',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
