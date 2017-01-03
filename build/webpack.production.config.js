@@ -42,12 +42,12 @@ module.exports = {
       {
         test: /\.scss$/,
         include: path.resolve(__dirname, '../src/styles'),
-        loader: 'style!css!postcss!sass'
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
       },
       {
         test: /\.scss$/,
         exclude: path.resolve(__dirname, '../src/styles'),
-        loader: 'style!css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:8]!postcss!sass'
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:8]!postcss!sass')
       }
     ]
   },
