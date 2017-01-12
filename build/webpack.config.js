@@ -7,10 +7,10 @@ import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 const ENV = process.env.NODE_ENV
 
 module.exports = {
-  context: path.join(__dirname, '../src'),
+  context: path.join(__dirname, '../'),
   entry: {
     app: [
-      './main.jsx',
+      './src/main.jsx',
       'webpack-hot-middleware/client'
     ],
     vendor: [
@@ -58,7 +58,7 @@ module.exports = {
   ],
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app.html',
+      template: './src/app.html',
       filename: 'app.html',
       minify: {
         collapseWhitespace: false

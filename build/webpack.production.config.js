@@ -7,10 +7,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const ENV = process.env.NODE_ENV
 
 module.exports = {
-  context: path.join(__dirname, '../src'),
+  context: path.join(__dirname, '../'),
   entry: {
     app: [
-      './main.jsx'
+      './src/main.jsx'
     ],
     vendor: [
       'react',
@@ -56,7 +56,7 @@ module.exports = {
   ],
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app.html',
+      template: './src/app.html',
       filename: 'app.html',
       minify: {
         collapseWhitespace: false
