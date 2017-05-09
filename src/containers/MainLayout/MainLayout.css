@@ -1,0 +1,13 @@
+:root {
+  --p: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & a {
+    text-decoration: none;
+    padding: 0 var(--p);
+  }
+}
