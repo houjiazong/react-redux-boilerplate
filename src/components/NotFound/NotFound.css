@@ -1,0 +1,7 @@
+.notFound {
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

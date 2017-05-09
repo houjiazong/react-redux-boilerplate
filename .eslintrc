@@ -6,21 +6,9 @@
   ],
   "plugins": [
     "babel",
-    "react",
-    "promise"
-  ],
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
-  },
-  ecmaFeatures: {
-    "jsx": true
-  },
-  "rules": {
-    "space-before-function-paren": ["error", {"anonymous": "always", "named": "never"}],
-    "jsx-quotes": [2, "prefer-single"],
-    "react/jsx-no-bind": [0, {"ignoreRefs": true, "allowArrowFunctions": true, "allowBind": true}],
-    "react/jsx-space-before-closing": [0, "never"]
-  }
+    "import",
+    "node",
+    "promise",
+    "react"
+  ]
 }
