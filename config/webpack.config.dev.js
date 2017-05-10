@@ -11,7 +11,13 @@ module.exports = {
     ],
     vendor: [
       'react',
-      'react-dom'
+      'react-dom',
+      'redux',
+      'react-redux',
+      'react-router-redux',
+      'prop-types',
+      'react-helmet',
+      'react-router-dom'
     ]
   },
   output: {

@@ -11,7 +11,12 @@ const config = {
   dir_dist: 'dist',
   dir_public: 'public',
   dir_server: 'server',
-  server_port: process.env.PORT || 3000
+  server_port: process.env.PORT || 3000,
+
+  // ----------------------------------
+  // Proxy Target
+  // ----------------------------------
+  proxy_target: 'https://www.baidu.com'
 }
 
 config.global = {

@@ -2,6 +2,7 @@ const express = require('express')
 const webpackDevConfig = require('../config/webpack.config.dev')
 const webpack = require('webpack')
 const path = require('path')
+const proxy = require('http-proxy-middleware')
 const debug = require('debug')('app:server')
 
 const project = require('../config/project.config')
@@ -31,6 +32,14 @@ if (project.global.__DEV__) {
   }))
 
   app.use(express.static(project.paths.public()))
+
+  app.use('/api', proxy({
+    target: project.proxy_target,
+    pathRewrite: {
+      '^/api': ''
+    },
+    changeOrigin: true
+  }))
 
   app.use('*', (req, res, next) => {
     const filename = path.join(compiler.outputPath, 'index.html')
