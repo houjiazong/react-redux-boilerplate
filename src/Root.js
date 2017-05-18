@@ -1,13 +1,9 @@
-import React, {
+import {
   Component
 } from 'react'
-import {BrowserRouter, StaticRouter} from 'react-router-dom'
 import axios from 'axios'
 
-import {isBrowser} from './utils'
 import {makeRoutes} from './routes'
-
-const Router = isBrowser ? BrowserRouter : StaticRouter
 
 class Root extends Component {
   componentDidMount () {
