@@ -22,9 +22,7 @@ class Root extends Component {
     })
   }
   render () {
-    return (
-      <Router>{makeRoutes()}</Router>
-    )
+    return makeRoutes()
   }
 }
 
