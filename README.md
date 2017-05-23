@@ -11,7 +11,7 @@ A boilerplate for React && Redux
 - [x] [ESLint](http://eslint.org/)
 - [x] [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement.html)
 - [x] [Dev Server && API Proxy](https://webpack.github.io/docs/webpack-dev-server.html)
-- [x] [CSSNext](http://cssnext.io/)
+- [x] [SASS](http://sass-lang.com/)
 - [x] [Autoprefixer](https://github.com/postcss/autoprefixer)
 - [x] [PostCSS](https://github.com/postcss/postcss)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux)

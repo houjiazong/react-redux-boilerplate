@@ -4,6 +4,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const project = require('./project.config')
 
+const __DEV__ = project.env === 'development'
+const __PROD__ = project.env === 'production'
+
 module.exports = {
   entry: {
     app: project.paths.client('main.js'),
@@ -24,7 +27,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx', '.css']
+    extensions: ['.js', '.json', '.jsx']
   },
   devtool: 'source-map',
   name: 'client',
@@ -37,7 +40,7 @@ module.exports = {
         include: project.paths.client()
       },
       {
-        test: /\.css$/,
+        test: /\.(sass|scss)$/,
         exclude: /node_modules/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -55,6 +58,9 @@ module.exports = {
               options: {
                 plugins: require('./postcss.config')
               }
+            },
+            {
+              loader: 'sass-loader'
             }
           ]
         })
@@ -67,7 +73,10 @@ module.exports = {
       filename: 'js/vendor.[chunkhash:8].js',
       minChunks: Infinity
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.DefinePlugin({
+      __DEV__,
+      __PROD__
+    }),
     new HtmlWebpackPlugin({
       template: project.paths.client('index.html'),
       hash: false,

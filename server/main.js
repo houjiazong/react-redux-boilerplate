@@ -9,7 +9,7 @@ const project = require('../config/project.config')
 
 const app = express()
 
-if (project.global.__DEV__) {
+if (project.env === 'development') {
   const compiler = webpack(webpackDevConfig)
 
   debug('Enabling webpack dev and HMR middleware')
@@ -20,11 +20,7 @@ if (project.global.__DEV__) {
     quiet: false,             // display nothing to the console
     noInfo: false,            // display no info to console (only warnings and errors)
     lazy: false,              // switch into lazy mode, that means no watching, but recompilation on every request
-    stats: {
-      chunks: false,
-      chunkModules: false,
-      colors: true
-    }
+    stats: 'normal'
   }))
 
   app.use(require('webpack-hot-middleware')(compiler, {

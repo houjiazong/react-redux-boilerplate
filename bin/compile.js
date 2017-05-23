@@ -5,25 +5,17 @@ const webpackProdConfig = require('../config/webpack.config.prod')
 
 const project = require('../config/project.config')
 
-const webpackCompiler = (webpackProdConfig) => {
+const runWebpackCompiler = (webpackConfig) => {
   return new Promise((resolve, reject) => {
-    const compiler = webpack(webpackProdConfig)
-
-    compiler.run((err, stats) => {
+    webpack(webpackConfig).run((err, stats) => {
       if (err) {
         debug('==> 😭  Webpack compiler encountered a fatal error.', err)
         return reject(err)
       }
 
       const jsonStats = stats.toJson()
-      debug('Webpack compile completed.')
-      debug(stats.toString({
-        chunks: false,
-        chunkModules: false,
-        colors: true
-      }))
 
-      if (jsonStats.errors.length) {
+      if (jsonStats.errors.length > 0) {
         debug('==> 😭  Webpack compiler encountered errors.')
         debug(jsonStats.errors.join('\n'))
         return reject(new Error('==> 😭  Webpack compiler encountered errors'))
@@ -31,31 +23,33 @@ const webpackCompiler = (webpackProdConfig) => {
         debug('==> 😭  Webpack compiler encountered warnings.')
         debug(jsonStats.warnings.join('\n'))
       } else {
-        debug('No errors or warnings encountered.')
+        debug('==> 😝  No errors or warnings encountered.')
       }
       resolve(jsonStats)
     })
   })
 }
 
-const compile = () => {
-  debug('Starting compiler.')
-  return Promise.resolve()
-    .then(() => webpackCompiler(webpackProdConfig))
-    .then(stats => {
-      if (stats.warnings.length) {
-        throw new Error('Config set to fail on warning, exiting with status code "1".')
-      }
-      debug('Copying static assets to dist folder.')
-      fs.copySync(project.paths.public(), project.paths.dist())
-    })
-    .then(() => {
-      debug('==> 😝  Compilation completed successfully.')
-    })
-    .catch((err) => {
-      debug('==> 😭  Compiler encountered an error.', err)
-      process.exit(1)
-    })
-}
+const compile = () => Promise.resolve()
+  .then(debug('Starting compiler.'))
+  .then(() => debug('Target application environment: production'))
+  .then(() => runWebpackCompiler(webpackProdConfig))
+  .then((stats) => {
+    debug('Copying static assets from ./public to ./dist.')
+    fs.copySync(
+      project.paths.public(),
+      project.paths.dist()
+    )
+    return stats
+  })
+  .then((stats) => {
+    if (project.verbose) {
+      debug(stats.toString({
+        colors: true,
+        chunks: false
+      }))
+    }
+    debug('==> 😝  Compiler finished successfully! See ./dist.')
+  })
 
 compile()

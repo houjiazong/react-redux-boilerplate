@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const project = require('./project.config')
 
+const __DEV__ = project.env === 'development'
+const __PROD__ = project.env === 'production'
+
 module.exports = {
   entry: {
     app: [
@@ -26,7 +29,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx', '.css']
+    extensions: ['.js', '.json', '.jsx']
   },
   devtool: 'cheap-module-source-map',
   name: 'client',
@@ -39,7 +42,7 @@ module.exports = {
         include: project.paths.client()
       },
       {
-        test: /\.css$/,
+        test: /\.(sass|scss)$/,
         exclude: /node_modules/,
         use: [
           'style-loader',
@@ -56,6 +59,9 @@ module.exports = {
             options: {
               plugins: require('./postcss.config')
             }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       }
@@ -67,7 +73,10 @@ module.exports = {
       filename: 'js/vendor.[hash:8].js',
       minChunks: Infinity
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.DefinePlugin({
+      __DEV__,
+      __PROD__
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息

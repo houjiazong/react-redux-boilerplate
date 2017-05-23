@@ -1,7 +1,9 @@
 const path = require('path')
 
+const NODE_ENV = process.env.NODE_ENV || 'development'
+
 const config = {
-  env: process.env.NODE_ENV || 'development',
+  env: NODE_ENV,
 
   // ----------------------------------
   // Project Structure
@@ -13,15 +15,13 @@ const config = {
   dir_server: 'server',
   server_port: process.env.PORT || 3000,
 
+  // Whether to enable verbose logging
+  verbose: false,
+
   // ----------------------------------
   // Proxy Target
   // ----------------------------------
   proxy_target: 'https://www.baidu.com'
-}
-
-config.global = {
-  '__DEV__': config.env === 'development',
-  '__PROD__': config.env === 'production'
 }
 
 // ------------------------------------

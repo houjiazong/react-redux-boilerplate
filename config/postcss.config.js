@@ -1,6 +1,5 @@
 module.exports = () => [
-  require('postcss-import')(),
-  require('postcss-cssnext')({
+  require('autoprefixer')({
     browsers: [
       '>1%',
       'last 4 versions',

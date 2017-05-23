@@ -10,5 +10,12 @@
     "node",
     "promise",
     "react"
-  ]
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "__DEV__": false,
+    "__PROD__": false
+  }
 }
