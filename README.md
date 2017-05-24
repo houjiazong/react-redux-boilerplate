@@ -16,6 +16,7 @@ A boilerplate for React && Redux
 - [x] [PostCSS](https://github.com/postcss/postcss)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux)
 - [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
+- [x] Reddit Demo
 
 ## Install
 

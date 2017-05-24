@@ -21,7 +21,7 @@ const config = {
   // ----------------------------------
   // Proxy Target
   // ----------------------------------
-  proxy_target: 'https://www.baidu.com'
+  proxy_target: 'http://www.reddit.com'
 }
 
 // ------------------------------------

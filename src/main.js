@@ -17,7 +17,7 @@ const store = createStore(window.__INITIAL_STATE__, history)
 const MOUNT_NODE = document.getElementById('root')
 
 const render = () => {
-  const App = require('./components/App').default
+  const App = require('./containers/App').default
 
   ReactDOM.render(
     <App store={store} history={history} />,
@@ -31,7 +31,7 @@ if (__DEV__) {
   if (module.hot) {
     // Setup hot module replacement
     module.hot.accept([
-      './components/App'
+      './containers/App'
     ], () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)

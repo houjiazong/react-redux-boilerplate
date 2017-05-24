@@ -11,14 +11,16 @@ module.exports = {
   entry: {
     app: project.paths.client('main.js'),
     vendor: [
+      'axios',
+      'prop-types',
       'react',
       'react-dom',
-      'redux',
-      'react-redux',
-      'react-router-redux',
-      'prop-types',
       'react-helmet',
-      'react-router-dom'
+      'react-redux',
+      'react-router-dom',
+      'react-router-redux',
+      'redux',
+      'redux-thunk'
     ]
   },
   output: {
