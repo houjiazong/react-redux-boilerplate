@@ -77,7 +77,10 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       __DEV__,
-      __PROD__
+      __PROD__,
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
