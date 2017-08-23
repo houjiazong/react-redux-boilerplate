@@ -3,14 +3,18 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types'
 
+import styles from './styles.scss'
+
 export default class Posts extends Component {
   render () {
     return (
-      <ul>
+      <div className={styles.list}>
         {this.props.posts.map((post, i) =>
-          <li key={i}>{post.title}</li>
+          <a key={i} className={styles.link} target='_blank' href={post.url}>
+            {post.title}
+          </a>
         )}
-      </ul>
+      </div>
     )
   }
 }

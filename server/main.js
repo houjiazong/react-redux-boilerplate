@@ -17,10 +17,13 @@ if (project.env === 'development') {
     contentBase: project.paths.dist(),
     publicPath: webpackDevConfig.output.publicPath,
     hot: true,
-    quiet: false,             // display nothing to the console
-    noInfo: false,            // display no info to console (only warnings and errors)
-    lazy: false,              // switch into lazy mode, that means no watching, but recompilation on every request
-    stats: 'normal'
+    quiet: false,
+    noInfo: false,
+    lazy: false,
+    stats: {
+      modules: false,
+      colors: true
+    }
   }))
 
   app.use(require('webpack-hot-middleware')(compiler, {

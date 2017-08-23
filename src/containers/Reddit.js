@@ -46,7 +46,7 @@ class Reddit extends Component {
           value={selectedSubreddit}
           onChange={this.handleChange}
           options={[ 'reactjs', 'frontend' ]} />
-        <p>
+        <p style={{textAlign: 'center'}}>
           {lastUpdated &&
             <span>
               Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
@@ -60,10 +60,10 @@ class Reddit extends Component {
           }
         </p>
         {isFetching && posts.length === 0 &&
-          <h2>Loading...</h2>
+          <h2 style={{textAlign: 'center'}}>Loading...</h2>
         }
         {!isFetching && posts.length === 0 &&
-          <h2>Empty.</h2>
+          <h2 style={{textAlign: 'center'}}>Empty.</h2>
         }
         {posts.length > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
