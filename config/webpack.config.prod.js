@@ -25,7 +25,7 @@ module.exports = {
   },
   output: {
     path: project.paths.dist(),
-    filename: './js/[name].[chunkhash:8].js',
+    filename: 'js/[name].[chunkhash:8].js',
     publicPath: '/'
   },
   resolve: {
@@ -73,7 +73,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: './js/vendor.[chunkhash:8].js',
+      filename: 'js/vendor.[chunkhash:8].js',
       minChunks: Infinity
     }),
     new webpack.DefinePlugin({
@@ -98,6 +98,6 @@ module.exports = {
       },
       sourceMap: true
     }),
-    new ExtractTextPlugin('./css/[name].[contenthash:8].css')
+    new ExtractTextPlugin('css/[name].[contenthash:8].css')
   ]
 }

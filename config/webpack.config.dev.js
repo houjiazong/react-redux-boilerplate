@@ -27,7 +27,7 @@ module.exports = {
   },
   output: {
     path: project.paths.dist(),
-    filename: './js/[name].[hash:8].js',
+    filename: 'js/[name].[hash:8].js',
     publicPath: '/'
   },
   resolve: {
@@ -72,7 +72,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: './js/vendor.[hash:8].js',
+      filename: 'js/vendor.[hash:8].js',
       minChunks: Infinity
     }),
     new webpack.DefinePlugin({
